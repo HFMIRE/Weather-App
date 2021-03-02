@@ -14,7 +14,6 @@ window.addEventListener("load", () => {
     navigator.geolocation.getCurrentPosition((postion) => {
       lon = postion.coords.longitude;
       lat = postion.coords.latitude;
-      console.log(lat, lon);
 
       fetch(
         `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apikey}`,
@@ -29,7 +28,6 @@ window.addEventListener("load", () => {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           const { temp } = data.main;
           const { description, icon } = data.weather[0];
           const name = data.name;
@@ -39,7 +37,6 @@ window.addEventListener("load", () => {
           temperatureDescription.textContent = description;
           //setting up icon
           iconDisplay.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-          console.log(temperatureDescription);
         });
     });
   }
